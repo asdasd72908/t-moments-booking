@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T-MOMENTS | 國家級金牌教練親授格鬥訓練</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #0F0F0F;
+            color: #FFFFFF;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        /* Animations */
+        @keyframes pulse-gold {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 40px rgba(212, 175, 55, 0.8);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .pulse-gold {
+            animation: pulse-gold 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+
+        .gold-gradient {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Navbar */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo img {
+            height: 48px;
+            width: 48px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 20px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            font-weight: 500;
+            color: #D3D3D3;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #D4AF37;
+        }
+
+        .nav-links .cta-btn {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            color: #0F0F0F;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .nav-links .cta-btn:hover {
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 80px 20px 40px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 384px;
+            height: 384px;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 50%;
+            filter: blur(120px);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 384px;
+            height: 384px;
+            background: rgba(212, 175, 55, 0.05);
+            border-radius: 50%;
+            filter: blur(120px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 999px;
+            padding: 8px 16px;
+            margin-bottom: 32px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #D4AF37;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero h1 .gold {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #D3D3D3;
+            max-width: 800px;
+            margin: 0 auto 32px;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            color: #0F0F0F;
+            font-weight: bold;
+            padding: 16px 32px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .hero-cta:hover {
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.5);
+            transform: translateY(-3px);
+        }
+
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 48px;
+            font-size: 14px;
+            color: #A9A9A9;
+        }
+
+        .hero-trust span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-trust .checkmark {
+            color: #D4AF37;
+            font-weight: bold;
+        }
+
+        /* Introduction Section */
+        .intro {
+            background: linear-gradient(to bottom, #0F0F0F, rgba(15, 15, 15, 0.5));
+            padding: 80px 20px;
+        }
+
+        .intro-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .intro h2 {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 48px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        .intro-card {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s;
+        }
+
+        .intro-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+            border-color: rgba(212, 175, 55, 0.6);
+        }
+
+        .intro-card h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+            color: #D4AF37;
+        }
+
+        .intro-card p {
+            color: #D3D3D3;
+            line-height: 1.8;
+        }
+
+        .intro-highlight {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(255, 215, 0, 0.05) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        .intro-highlight p {
+            font-size: 18px;
+            color: #D3D3D3;
+            line-height: 1.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(255, 215, 0, 0.1) 100%);
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .cta-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            color: #D3D3D3;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            color: #0F0F0F;
+            font-weight: bold;
+            padding: 20px 48px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s;
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+            animation: pulse-gold 2s ease-in-out infinite;
+        }
+
+        .cta-button:hover {
+            box-shadow: 0 25px 60px rgba(212, 175, 55, 0.6);
+            transform: translateY(-5px);
+        }
+
+        /* Floating Button */
+        .floating-btn {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 100%);
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5);
+            transition: all 0.3s;
+            z-index: 40;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .floating-btn:hover {
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.7);
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .intro h2 {
+                font-size: 32px;
+            }
+
+            .cta-section h2 {
+                font-size: 28px;
+            }
+
+            .floating-btn {
+                width: 56px;
+                height: 56px;
+                font-size: 28px;
+                bottom: 24px;
+                right: 24px;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background: #0A0A0A;
+            padding: 40px 20px;
+            text-align: center;
+            color: #808080;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin-bottom: 12px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #D4AF37;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #FFD700;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="navbar-container">
+            <div class="logo">
+                <img src="https://via.placeholder.com/48x48?text=T" alt="T-MOMENTS Logo">
+                <span class="logo-text">T-MOMENTS</span>
+            </div>
+            <div class="nav-links">
+                <a href="#intro">簡介</a>
+                <a href="#cta">預約</a>
+                <button class="cta-btn" onclick="scrollToBooking()">立即預約</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>🔥</span>
+                <span>5月限定名額搶奪中</span>
+            </div>
+            <h1>
+                <span>T-MOMENTS：</span>
+                <span class="gold">國家級金牌教練親授</span>
+                <br>
+                <span>鍛造你的強者體魄與不屈心態</span>
+            </h1>
+            <p>
+                專為「格鬥愛好者補足摔技短板」、「青少年開發核心與防身心態」打造的頂級訓練系統。
+            </p>
+            <button class="hero-cta" onclick="scrollToBooking()">
+                <span>🔥</span>
+                <span>搶占本月金牌 1對1 / 小班體驗名額（僅限15人）</span>
+            </button>
+            <div class="hero-trust">
+                <span><span class="checkmark">✓</span> 全國運動會二連霸冠軍</span>
+                <span><span class="checkmark">✓</span> 亞洲U20錦標賽國家隊教練</span>
+                <span><span class="checkmark">✓</span> 10年科學化無傷訓練經驗</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="intro" id="intro">
+        <div class="intro-container">
+            <h2>
+                <span>為什麼選擇</span>
+                <span class="gold-gradient">T-MOMENTS</span>
+                <span>？</span>
+            </h2>
+            
+            <div class="intro-grid">
+                <div class="intro-card hover-lift">
+                    <h3>🏆 冠軍級教練</h3>
+                    <p>擁有全國運動會二連霸冠軍背景，以及亞洲U20錦標賽國家隊教練經驗。每一堂課都承載著10年的頂級競技智慧。</p>
+                </div>
+                <div class="intro-card hover-lift">
+                    <h3>🛡️ 無傷訓練系統</h3>
+                    <p>獨家開發「無傷摔技緩衝系統」，前3堂課專注於人體護體落法與核心強化，確保100%安全享受格鬥樂趣。</p>
+                </div>
+                <div class="intro-card hover-lift">
+                    <h3>📊 科學化方案</h3>
+                    <p>運用運動科學碩士專業分析，為每位學員規劃客製化訓練藍圖。不是盲目訓練，而是精準進步。</p>
+                </div>
+            </div>
+
+            <div class="intro-highlight">
+                <p>
+                    <strong>我們不只販售個人榮耀，更將10年國家隊的科學化無傷訓練經驗，轉化為最適合你的客製化教學菜單。</strong>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="cta">
+        <div class="cta-container">
+            <h2>
+                <span>準備好改變了嗎？</span>
+            </h2>
+            <p>
+                5月限定名額僅剩4個。國家級金牌教練的1對1與體驗小班，首堂課享受5折優惠。<br>
+                <strong>不要讓這個機會從指尖溜走。</strong>
+            </p>
+            <button class="cta-button" onclick="bookNow()">
+                <span>📅</span>
+                <span>立即預約Google Calendar</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Floating Button -->
+    <button class="floating-btn" onclick="bookNow()" title="預約課程">
+        📅
+    </button>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2024 T-MOMENTS. All rights reserved.</p>
+            <p>國家級金牌教練親授的格鬥訓練系統</p>
+            <div class="footer-links">
+                <a href="#intro">簡介</a>
+                <a href="#cta">預約</a>
+                <a href="https://line.me/R/ti/p/@247rhsvg" target="_blank">LINE 客服</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ============================================
+        // 【重要】請在此處填入你的 Google Calendar 預約連結
+        // ============================================
+        const GOOGLE_CALENDAR_LINK = 'YOUR_GOOGLE_CALENDAR_BOOKING_LINK_HERE';
+        // 例如：const GOOGLE_CALENDAR_LINK = 'https://calendar.google.com/calendar/u/0/r/eventedit?...';
+        // ============================================
+
+        function bookNow() {
+            if (GOOGLE_CALENDAR_LINK === 'YOUR_GOOGLE_CALENDAR_BOOKING_LINK_HERE') {
+                alert('預約連結尚未設定。請聯絡管理員。');
+                // 備用方案：導向 LINE
+                window.open('https://line.me/R/ti/p/@247rhsvg', '_blank');
+                return;
+            }
+            window.open(GOOGLE_CALENDAR_LINK, '_blank');
+        }
+
+        function scrollToBooking() {
+            const ctaSection = document.getElementById('cta');
+            ctaSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 頁面載入時的動畫
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('T-MOMENTS 預約系統已載入');
+            console.log('請在 JavaScript 中填入 GOOGLE_CALENDAR_LINK');
+        });
+    </script>
+</body>
+</html>
